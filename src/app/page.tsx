@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useRouter } from '../lib/next-shim';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const router = useRouter();

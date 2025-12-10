@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from '../../lib/next-shim';
+import { useRouter } from 'next/navigation';
 import { loginSchema, LoginFormData } from '../../lib/validators';
 import { apiRoutes } from '../../api/routes';
 import { Input } from '../../components/ui/Input';

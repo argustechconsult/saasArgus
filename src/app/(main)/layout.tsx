@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Sidebar } from '../../components/layout/Sidebar';
-import { useRouter } from '../../lib/next-shim';
+import { useRouter } from 'next/navigation';
 
 export default function MainLayout({
   children,

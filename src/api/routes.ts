@@ -1,4 +1,4 @@
-import { DatabaseSchema, User, ApiResponse } from '../../types';
+import { DatabaseSchema, User, ApiResponse } from '../types';
 import { hashPassword, comparePassword } from '../utils/bcryptUtils';
 
 const DB_KEY = 'saas_mock_db';

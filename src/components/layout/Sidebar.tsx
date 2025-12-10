@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Link, usePathname } from '../../lib/next-shim';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();

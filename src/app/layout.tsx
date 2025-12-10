@@ -1,4 +1,5 @@
 import React from 'react';
+import './globals.css';
 
 export const metadata = {
   title: 'SaaS Manager',
@@ -11,8 +12,10 @@ export default function RootLayout({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="antialiased min-h-screen bg-gray-50 text-slate-900 font-sans">
-      {children}
-    </div>
+    <html lang="en">
+      <body className="antialiased min-h-screen bg-gray-50 text-slate-900 font-sans">
+        {children}
+      </body>
+    </html>
   );
 }
