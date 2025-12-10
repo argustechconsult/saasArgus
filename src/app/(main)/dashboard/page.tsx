@@ -40,7 +40,7 @@ export default function DashboardPage() {
   }
 
   if (!data) {
-    return <div>Failed to load dashboard data.</div>;
+    return <div>Erro ao carregar dados do dashboard.</div>;
   }
 
   const netIncome = data.totalRevenue - data.totalExpense;
@@ -50,7 +50,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Revenue Card */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500">Total Revenue</h3>
+          <h3 className="text-sm font-medium text-gray-500">Total de Receita</h3>
           <p className="mt-2 text-3xl font-bold text-green-600">
             ${data.totalRevenue.toLocaleString()}
           </p>
@@ -58,7 +58,7 @@ export default function DashboardPage() {
 
         {/* Expenses Card */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
+          <h3 className="text-sm font-medium text-gray-500">Total de Despesas</h3>
           <p className="mt-2 text-3xl font-bold text-red-600">
             ${data.totalExpense.toLocaleString()}
           </p>
@@ -66,7 +66,7 @@ export default function DashboardPage() {
 
         {/* Net Income Card */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500">Net Income</h3>
+          <h3 className="text-sm font-medium text-gray-500">Total de Receita</h3>
           <p className={`mt-2 text-3xl font-bold ${netIncome >= 0 ? 'text-blue-600' : 'text-red-600'}`}>
             ${netIncome.toLocaleString()}
           </p>
@@ -74,7 +74,7 @@ export default function DashboardPage() {
 
         {/* Clients Card */}
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-sm font-medium text-gray-500">Total Clients</h3>
+          <h3 className="text-sm font-medium text-gray-500">Total de Clientes</h3>
           <p className="mt-2 text-3xl font-bold text-gray-900">
             {data.totalClients}
           </p>
@@ -83,16 +83,16 @@ export default function DashboardPage() {
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900">Recent Transactions</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Transações recentes</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
-                <th className="px-6 py-3">Description</th>
-                <th className="px-6 py-3">Date</th>
-                <th className="px-6 py-3">Type</th>
-                <th className="px-6 py-3 text-right">Amount</th>
+                <th className="px-6 py-3">Descrição</th>
+                <th className="px-6 py-3">Data</th>
+                <th className="px-6 py-3">Tipo</th>
+                <th className="px-6 py-3 text-right">Valor</th>
               </tr>
             </thead>
             <tbody>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
               ) : (
                 <tr>
                   <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
-                    No transactions found.
+                    Nenhuma transação encontrada.
                   </td>
                 </tr>
               )}
