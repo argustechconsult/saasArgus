@@ -12,8 +12,8 @@ export interface Client {
   name: string;
   email: string;
   phone: string;
-  status: 'Active' | 'Inactive';
-  sensitiveNotes?: string; // New field for sensitive data
+  status: string;
+  sensitiveNotes?: string | null; // New field for sensitive data
 }
 
 export interface Transaction {

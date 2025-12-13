@@ -1,5 +1,6 @@
 import { DatabaseSchema, User, ApiResponse } from '../types';
 import { hashPassword, comparePassword } from '../utils/bcryptUtils';
+import { v4 as uuidv4 } from 'uuid';
 
 const DB_KEY = 'saas_mock_db';
 
@@ -95,7 +96,7 @@ export const apiRoutes = {
 
       const passwordHash = await hashPassword(payload.password);
       const newUser: User = {
-        id: crypto.randomUUID(),
+        id: uuidv4(),
         email: payload.email,
         passwordHash,
         name: payload.name,
@@ -146,7 +147,7 @@ export const apiRoutes = {
   createClient: async (userId: string, payload: any) => {
     const db = getDB();
     const newClient = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       userId,
       ...payload,
       status: payload.status || 'Active',
@@ -184,7 +185,7 @@ export const apiRoutes = {
   createTransaction: async (userId: string, payload: { type: 'revenue' | 'expense'; amount: number; description: string; date: string }) => {
     const db = getDB();
     const newTransaction = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       userId,
       ...payload
     };
