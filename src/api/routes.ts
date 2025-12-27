@@ -13,7 +13,8 @@ const getDB = (): DatabaseSchema => {
     db = {
       users: [],
       clients: [],
-      transactions: []
+      transactions: [],
+      billingConfig: [],
     };
   } else {
     db = JSON.parse(stored);

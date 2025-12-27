@@ -139,9 +139,9 @@ export default function LoginPage() {
             <p className="font-semibold mb-2">Test Credentials:</p>
             <div className="grid grid-cols-[60px_1fr] gap-1">
               <span className="font-medium text-blue-900">Email:</span>
-              <span className="font-mono text-blue-800">demo@example.com</span>
+              <span className="font-mono text-blue-800">admin@email.com</span>
               <span className="font-medium text-blue-900">Pass:</span>
-              <span className="font-mono text-blue-800">password123</span>
+              <span className="font-mono text-blue-800">admin123</span>
             </div>
           </div>
         </form>

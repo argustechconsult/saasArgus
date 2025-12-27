@@ -19,6 +19,8 @@ const clientSchema = z.object({
   email: z.string().email('Valid email is required'),
   phone: z.string().min(5, 'Phone is required'),
   sensitiveNotes: z.string().optional(),
+  paymentDueDate: z.coerce.number().min(1).max(31).optional(),
+  contractValue: z.coerce.number().min(0).optional(),
 });
 
 type ClientFormData = z.infer<typeof clientSchema>;
@@ -39,7 +41,7 @@ export default function ClientsPage() {
     setValue,
     formState: { errors },
   } = useForm<ClientFormData>({
-    resolver: zodResolver(clientSchema),
+    resolver: zodResolver(clientSchema) as any,
   });
 
   const loadClients = async () => {
@@ -84,6 +86,8 @@ export default function ClientsPage() {
     setValue('email', client.email);
     setValue('phone', client.phone);
     setValue('sensitiveNotes', client.sensitiveNotes || '');
+    setValue('paymentDueDate', client.paymentDueDate || undefined);
+    setValue('contractValue', client.contractValue || undefined);
     setShowForm(true);
   };
 
@@ -148,6 +152,23 @@ export default function ClientsPage() {
                 {...register('phone')}
                 error={errors.phone?.message}
               />
+              <Input
+                label="Dia de Vencimento"
+                type="number"
+                placeholder="1-31"
+                min={1}
+                max={31}
+                {...register('paymentDueDate')}
+                error={errors.paymentDueDate?.message}
+              />
+              <Input
+                label="Valor do Contrato (R$)"
+                type="number"
+                step="0.01"
+                placeholder="0.00"
+                {...register('contractValue')}
+                error={errors.contractValue?.message}
+              />
             </div>
 
             <div className="w-full">
@@ -183,6 +204,7 @@ export default function ClientsPage() {
               <th className="px-6 py-3">Cliente</th>
               <th className="px-6 py-3">Contato</th>
               <th className="px-6 py-3">Status</th>
+              <th className="px-6 py-3">Vencimento</th>
               <th className="px-6 py-3">Dados Sensíveis</th>
               <th className="px-6 py-3 text-right">Ações</th>
             </tr>
@@ -213,6 +235,13 @@ export default function ClientsPage() {
                     }`}
                   >
                     {client.status === 'Active' ? 'Ativo' : 'Inativo'}
+                  </span>
+                </td>
+                <td className="px-6 py-4">
+                  <span className="text-gray-600">
+                    {client.paymentDueDate
+                      ? `Dia ${client.paymentDueDate}`
+                      : '-'}
                   </span>
                 </td>
                 <td className="px-6 py-4">

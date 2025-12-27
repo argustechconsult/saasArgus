@@ -13,7 +13,9 @@ export interface Client {
   email: string;
   phone: string;
   status: string;
-  sensitiveNotes?: string | null; // New field for sensitive data
+  sensitiveNotes?: string | null;
+  paymentDueDate?: number | null;
+  contractValue?: number | null;
 }
 
 export interface Transaction {
@@ -25,10 +27,22 @@ export interface Transaction {
   date: string;
 }
 
+export interface BillingConfig {
+  id: string;
+  userId: string;
+  companyName: string;
+  cnpj: string;
+  bank?: string | null;
+  agency?: string | null;
+  account?: string | null;
+  pixKey?: string | null;
+}
+
 export interface DatabaseSchema {
   users: User[];
   clients: Client[];
   transactions: Transaction[];
+  billingConfig: BillingConfig[];
 }
 
 export interface ApiResponse<T> {

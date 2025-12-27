@@ -27,6 +27,8 @@ export async function createClient(userId: string, data: Partial<Client>) {
         phone: data.phone!,
         status: data.status || 'Active',
         sensitiveNotes: data.sensitiveNotes,
+        paymentDueDate: data.paymentDueDate ? Number(data.paymentDueDate) : null,
+        contractValue: data.contractValue ? Number(data.contractValue) : null,
       },
     });
     revalidatePath('/clients');
@@ -56,6 +58,8 @@ export async function updateClient(userId: string, clientId: string, data: Parti
         phone: data.phone,
         status: data.status,
         sensitiveNotes: data.sensitiveNotes,
+        paymentDueDate: data.paymentDueDate ? Number(data.paymentDueDate) : null,
+        contractValue: data.contractValue ? Number(data.contractValue) : null,
       },
     });
     revalidatePath('/clients');
